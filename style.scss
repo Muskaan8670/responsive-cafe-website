@@ -75,7 +75,7 @@ html{
                 width: fit-content;
                 outline: none;
                 padding: 0.7rem 1rem;
-                border-radius: 0.5rem;
+                border-radius: 1.2rem;
                 //padding: 10px 16px;
                 border: 1.5px solid #c6a45e;
 
@@ -84,7 +84,7 @@ html{
 
 }
 
-@mixin cardStyles($img:url(founder.avif)){
+@mixin cardStyles($img:url(assets/founder.avif)){
             width: 100%;
             background-image: $img;
             background-size: cover;
@@ -92,7 +92,7 @@ html{
             border-radius: 1rem;
             @include flex-column(0rem);
             justify-content: space-between;
-            padding: 1rem;
+            padding: 1rem ;
 
             .icon,
             .bottom{
@@ -122,6 +122,25 @@ html{
             }
 }
 
+@mixin productCards($img:url(assets/caramelLatte.avif)){
+            width: 100%;
+            background-image: $img;
+            background-size: cover;
+            aspect-ratio: 1/1;
+            border-radius: 1rem;
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            gap: 1rem;
+            color: whitesmoke;
+            .bottom{
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+            }
+}
+
 main{
     width: 100%;
     @include flex-column(0rem);
@@ -129,8 +148,7 @@ main{
     section.view1{
         @include flex-column(1rem);
         padding: 1rem;
-    
-    
+     
     .top{
         aspect-ratio: 4/3;   
         overflow: hidden;
@@ -141,6 +159,69 @@ main{
         @include sectionBottomStyle();
 }
 }  
+ .menu-header {
+        // margin-bottom: 2.5rem;
+        width: 100%;
+        padding: 1rem ;
+
+        .menu-tag {
+        color: #c6a45e;
+        text-transform: uppercase;
+        letter-spacing: 0.2rem;
+        font-size: 2rem;
+        }
+
+        h2 {
+            color: #4e3502;
+        font-size: clamp(1.8rem, 4vw, 2.6rem);
+        margin: 0.6rem 0;
+        }
+
+    }
+section.products{
+       width: 100%;
+       padding: 1rem;
+       display: flex;
+       flex-direction: column;
+       gap: 1rem;
+       
+     
+     .menu-card1{
+            @include productCards(url(assets/caramelLatte.avif));     
+     }
+        
+     .menu-card2{
+            @include productCards(url(assets/cappuccino.avif));     
+     }
+        
+     .menu-card3{
+            @include productCards(url(assets/butterCroissant.avif));     
+     }
+        
+
+}
+.menu-cta {
+  margin-top: 1rem;
+  text-align: center;
+   a{
+        font-size: 1.2rem;
+        text-decoration: none;
+        color: #C6A45E;
+        background-color: #6f4e376c;
+        border: 0.1rem solid #ac8e43;
+        padding: 0.7rem 1.5rem;
+        border-radius: 2rem;
+    }
+    margin-bottom: 2rem;
+}
+.menu-cta:hover{
+    a{
+        color: #ac8e43;
+       background-color: transparent;
+       
+    }
+    
+}
     section.view2{
         width: 100%;
         @include flex-column(1rem);
@@ -204,18 +285,31 @@ main{
         gap: 2rem;
         color: #ac8e43;
         width: 100%;
-        padding: 1rem;
+        padding: 1rem ;
         border-radius: 0.7rem;
         .card1{
-            @include cardStyles(url(founder.avif));
+            @include cardStyles(url(assets/founder.avif));
         }
          .card2{
-            @include cardStyles(url(marketing.avif));
+            @include cardStyles(url(assets/marketing.avif));
         }
          .card3{
-            @include cardStyles(url(manager.avif));
+            @include cardStyles(url(assets/manager.avif));
         
         }
+    }
+    section.view6{
+         width: 100%;
+            padding: 1rem;
+            @include flex-column(1rem);
+
+            .top{   
+                 overflow: hidden;
+                @include imgStyle();
+            }
+             .bottom{
+                @include sectionBottomStyle();
+             }
     }
 }
 
@@ -226,7 +320,7 @@ section{
 @mixin sameCss($direction,$btmpd,$bp,$txtp,$h1,$fw,$ltrSpace){
             
             flex-direction: $direction;
-            padding: 1rem 1rem;
+            padding: 1rem 4rem;
             .top,
             .bottom{
                 width: 50%;
@@ -254,7 +348,7 @@ section{
 
 @mixin view2layout{
      flex-direction: row;
-     padding: 1rem 1rem;
+     padding: 1rem 4rem;
      .element{
                 h2{
                     font-size: 3.5rem;
@@ -270,13 +364,20 @@ section{
             @include sameCss(row,3rem,1.2rem,1.2rem,1.7rem,0,0em);
 
              .top{
-                  aspect-ratio: 1 / 1;   /* try 1/1, 3/4, 16/9 based on design */
+                  aspect-ratio: 1 / 1;  
                   overflow: hidden;
               img {
                 height: 100%;
                 object-fit: cover;
             }
         }
+        }
+        .menu-header{
+            padding: 1rem 4rem;
+        }
+        section.products{
+            flex-direction: row;
+            padding: 1rem 4rem;
         }
         section.view2{
             @include view2layout();
@@ -334,13 +435,14 @@ section{
          section.OurTeam{
          align-self: center;
          width: 100%;
+         padding: 1rem 4rem;
             h2{
                 padding: 0.8rem 1.5rem;
                 font-size: 3rem;
             }
         }
         section.view5{
-            padding: 1rem 1rem;
+            padding: 1rem 4rem;
             align-self: center;
             flex-direction: row;
              .card1,
@@ -359,6 +461,30 @@ section{
                
             }
         }
+        }
+        section.view6{
+             @include sameCss(row,3rem,1.2rem,1.2rem,1.7rem,0,0em);
+
+            .top{
+                  aspect-ratio: 1 / 1;   
+                  overflow: hidden;
+              img {
+                height: 100%;
+                object-fit: cover;
+              }
+           }
+            .bottom{
+                .text{
+                    .paras{
+                        gap: 1rem;
+                        display: flex;
+                        flex-direction: row;
+                        font-size: 0.3rem;
+                        opacity: 0.7;
+                    }
+                    
+                }
+            }
         }
         
       }
@@ -380,6 +506,10 @@ section{
                     }
                 }
             }
+        }
+        .menu-header{
+            align-self: center;
+            justify-self: center;
         }
         section.view2{
             align-self: center;
@@ -446,7 +576,7 @@ section{
             }
         }
         section.view5{
-            padding: 1rem 1rem;
+            padding: 1rem 4rem;
             align-self: center;
             flex-direction: row;
             .card1,
@@ -466,6 +596,31 @@ section{
             }
         }
         
+        }
+        section.view6{
+            align-self: center;
+            @include sameCss(row,2rem,1.6rem,1.6rem,2.5rem,60,0.18em);
+
+            .top{
+                  aspect-ratio: 1 / 1;   
+                  overflow: hidden;
+              img {
+                height: 100%;
+                object-fit: cover;
+              }
+           }
+            .bottom{
+                .text{
+                    .paras{
+                        gap: 1rem;
+                        display: flex;
+                        flex-direction: row;
+                        font-size: 0.3rem;
+                        opacity: 0.7;
+                    }
+                    
+                }
+            }
         }
       }
 }
